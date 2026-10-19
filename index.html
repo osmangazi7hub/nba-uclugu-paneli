@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NBA Üçlük Paneli</title>
+  <meta name="description" content="NBA 2025-26 normal sezonunda isabetli üçlük sayısı ile galibiyet arasındaki ilişkiyi gösteren etkileşimli panel.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="sayfa">
+    <header>
+      <h1>NBA 2025-26 · Üçlük ve galibiyet</h1>
+      <p class="ozet" id="ozet">Veriler yükleniyor…</p>
+    </header>
+
+    <section class="kart kontroller">
+      <div class="kontrol">
+        <label for="esik"><span>Eşik: maçta en az … isabetli üçlük</span><output id="esik-deger">20+</output></label>
+        <input id="esik" type="range" min="8" max="26" step="1" value="20">
+        <div class="hizli" id="hizli"></div>
+      </div>
+      <div class="kontrol">
+        <label for="kiyas"><span>Karşılaştır: en az …</span><output id="kiyas-deger">18+</output></label>
+        <input id="kiyas" type="range" min="8" max="26" step="1" value="18">
+        <p class="not">Sürükle ya da aşağıdaki grafikte bir noktaya dokun</p>
+      </div>
+    </section>
+
+    <section class="kutucuklar">
+      <div class="kart kutucuk">
+        <span class="etiket" id="k1-etiket">Galibiyet oranı</span>
+        <span class="deger" id="k1">—</span>
+        <span class="alt" id="k1-alt">—</span>
+      </div>
+      <div class="kart kutucuk">
+        <span class="etiket" id="k2-etiket">Karşılaştırma</span>
+        <span class="deger" id="k2">—</span>
+        <span class="alt" id="k2-alt">—</span>
+      </div>
+      <div class="kart kutucuk">
+        <span class="etiket">Fark (puan)</span>
+        <span class="deger" id="k3">—</span>
+        <span class="alt" id="k3-alt">—</span>
+      </div>
+      <div class="kart kutucuk">
+        <span class="etiket">Bu eşiğe ulaşılan maç</span>
+        <span class="deger" id="k4">—</span>
+        <span class="alt" id="k4-alt">—</span>
+      </div>
+      <div class="kart kutucuk">
+        <span class="etiket">Lig ortalaması · maç başı üçlük</span>
+        <span class="deger" id="k5">—</span>
+        <span class="alt" id="k5-alt">—</span>
+      </div>
+    </section>
+
+    <section class="izgara">
+      <div class="kart">
+        <h2>Eşik değiştikçe galibiyet oranı</h2>
+        <p class="not">Her nokta: maçta en az o kadar üçlük atan takımların galibiyet oranı. Bir noktaya dokununca eşik o olur.</p>
+        <div class="grafik" id="grafik-esik"></div>
+      </div>
+      <div class="kart">
+        <h2>Tam olarak kaç üçlük atınca ne oldu</h2>
+        <p class="not">Çubuk: o sayıda isabet bulunan maçlarda galibiyet oranı. Renkli çubuklar eşiğin üstü; soluk olanlar 10'dan az maça dayanıyor.</p>
+        <div class="grafik" id="grafik-tam"></div>
+      </div>
+    </section>
+
+    <section class="izgara">
+      <div class="kart">
+        <h2>Asıl belirleyici: rakipten fazla mı attın?</h2>
+        <p class="not">Üçlük sayısını rakibininkiyle kıyaslayınca. İki takımın eşit üçlük attığı 79 maç gösterilmiyor: o maçlarda bir takım kazanıp diğeri kaybettiği için oran tanım gereği hep %50 çıkar.</p>
+        <table id="tablo-rakip">
+          <thead><tr><th>Durum</th><th class="sayi">Maç</th><th class="sayi">G</th><th class="sayi">Galibiyet %</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="kart">
+        <h2 id="takim-baslik">Takım takım</h2>
+        <p class="not">Eşiğe ulaştıkları maçlar; en çok ulaşandan aza.</p>
+        <div class="tablo-kutu">
+          <table id="tablo-takim">
+            <thead><tr><th>Takım</th><th class="sayi">Maç</th><th class="sayi">G</th><th class="sayi">Galibiyet %</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="kart">
+      <h2 id="orneklem-baslik">Örneklem</h2>
+      <p class="not">Panelin hesapladığı her maç; en çok üçlükten aza.</p>
+      <div class="tablo-kutu">
+        <table id="tablo-orneklem">
+          <thead><tr><th>Tarih</th><th>Takım</th><th>Rakip</th><th class="sayi">3P</th><th class="sayi">Rakip 3P</th><th class="sayi">Skor</th><th>Sonuç</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer class="kaynak">
+      Kaynak: Basketball-Reference takım maç kayıtları, NBA 2025-26 normal sezonu (1.230 maç, 2.460 takım-maçı).
+      Her maç iki takımın kaydında karşılaştırılarak doğrulandı.
+    </footer>
+  </main>
+
+  <script src="js/vendor/d3.min.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

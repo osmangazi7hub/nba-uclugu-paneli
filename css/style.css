@@ -1,0 +1,183 @@
+:root {
+  --metin: #1f1e1d;
+  --metin-soluk: #6b6862;
+  --zemin: #faf9f5;
+  --kart: #ffffff;
+  --cizgi: #e6e3da;
+  --iyi: #2f7d4f;
+  --kotu: #b5442f;
+  --vurgu: #c4622d;
+  --vurgu-2: #3b6fb6;
+  --izgara: #ece9e1;
+  --eksen: #cfcac0;
+  --soluk-cubuk: #d6d1c7;
+  --referans: #a39e94;
+  --golge: 0 4px 16px rgba(0, 0, 0, .12);
+  --yazi: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --baslik-yazi: Georgia, "Times New Roman", serif;
+  --yaricap: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --metin: #ecebe6;
+    --metin-soluk: #a5a29a;
+    --zemin: #1c1b19;
+    --kart: #262522;
+    --cizgi: #3a3834;
+    --iyi: #6cc18f;
+    --kotu: #e5806b;
+    --vurgu: #e08a55;
+    --vurgu-2: #7aa5e6;
+    --izgara: #33312d;
+    --eksen: #4a4741;
+    --soluk-cubuk: #4d4a44;
+    --referans: #7c786f;
+    --golge: 0 4px 16px rgba(0, 0, 0, .5);
+  }
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: var(--zemin);
+  color: var(--metin);
+  font-family: var(--yazi);
+}
+
+.sayfa {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 16px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+h1 {
+  font-family: var(--baslik-yazi);
+  font-weight: 400;
+  font-size: 2rem;
+  margin: 0;
+}
+
+h2 { font-size: 1.05rem; font-weight: 600; margin: 0; }
+
+.ozet {
+  margin: 6px 0 0;
+  color: var(--metin-soluk);
+  line-height: 1.5;
+  max-width: 60rem;
+}
+.ozet b { color: var(--metin); font-variant-numeric: tabular-nums; }
+
+.kart {
+  background: var(--kart);
+  border: 1px solid var(--cizgi);
+  border-radius: var(--yaricap);
+  padding: 20px;
+  min-width: 0;
+}
+
+.not {
+  font-size: .8rem;
+  color: var(--metin-soluk);
+  margin: 4px 0 16px;
+  line-height: 1.45;
+}
+
+/* Kontroller */
+.kontroller {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: 24px;
+}
+.kontrol label { display: flex; justify-content: space-between; align-items: baseline; }
+.kontrol output { font-family: var(--baslik-yazi); font-size: 2rem; font-variant-numeric: tabular-nums; }
+.kontrol input[type=range] { width: 100%; margin-top: 8px; accent-color: var(--vurgu); }
+.kontrol .not { margin: 6px 0 0; }
+
+.hizli { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.hizli button {
+  font: inherit;
+  font-size: .8rem;
+  padding: 2px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--cizgi);
+  background: transparent;
+  color: var(--metin);
+  cursor: pointer;
+}
+.hizli button[aria-pressed=true] { background: var(--metin); color: var(--zemin); }
+
+/* Kutucuklar */
+.kutucuklar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+  gap: 16px;
+}
+.kutucuk { display: flex; flex-direction: column; gap: 4px; }
+.kutucuk .etiket, .kutucuk .alt { font-size: .8rem; color: var(--metin-soluk); }
+.kutucuk .deger {
+  font-family: var(--baslik-yazi);
+  font-size: 2rem;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Grafikler */
+.izgara {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  gap: 16px;
+}
+.grafik { position: relative; min-height: 260px; }
+.grafik svg { display: block; overflow: visible; }
+.grafik .eksen text { fill: var(--metin-soluk); font-size: .75rem; }
+.grafik .eksen line { stroke: var(--eksen); }
+
+.ipucu {
+  position: absolute;
+  pointer-events: none;
+  background: var(--kart);
+  border: 1px solid var(--cizgi);
+  border-radius: var(--yaricap);
+  box-shadow: var(--golge);
+  padding: 4px 8px;
+  font-size: .8rem;
+  white-space: nowrap;
+  display: none;
+  z-index: 2;
+}
+.ipucu .ipucu-baslik { color: var(--metin-soluk); }
+
+/* Tablolar */
+.tablo-kutu { max-height: 26rem; overflow: auto; }
+table { width: 100%; border-collapse: collapse; font-size: .8rem; font-variant-numeric: tabular-nums; }
+th {
+  position: sticky;
+  top: 0;
+  background: var(--kart);
+  text-align: left;
+  font-weight: 600;
+  color: var(--metin-soluk);
+  padding: 4px 8px;
+  border-bottom: 1px solid var(--cizgi);
+}
+td { padding: 4px 8px; border-bottom: 1px solid var(--cizgi); }
+.sayi { text-align: right; }
+.cubuk {
+  display: inline-block;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--vurgu);
+  vertical-align: middle;
+  margin-left: 6px;
+}
+.galibiyet { color: var(--iyi); }
+.maglubiyet { color: var(--kotu); }
+
+.kaynak { font-size: .8rem; color: var(--metin-soluk); line-height: 1.5; }
+
+.hata { color: var(--kotu); }

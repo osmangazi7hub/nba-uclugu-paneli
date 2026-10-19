@@ -1,0 +1,13 @@
+{
+  "name": "nba-uclugu-paneli",
+  "version": "1.0.0",
+  "description": "NBA 2025-26 sezonunda isabetli üçlük sayısı ile galibiyet arasındaki ilişkiyi gösteren etkileşimli panel.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "veri": "node scripts/veriyi-olustur.js",
+    "test": "node scripts/test.js",
+    "baslat": "npx --yes serve ."
+  },
+  "license": "MIT"
+}
